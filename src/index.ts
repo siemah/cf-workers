@@ -43,7 +43,7 @@ router
 		});
 	})
 	.post("/view", async (request, env: Env) => {
-		console.log("[[[[first]]]]")
+		const ip = request.headers.get("cf-connecting-ip");
 		const {
 			longitude,
 			latitude,
@@ -59,6 +59,7 @@ router
 			postalCode
 		} = request.cf;
 		const userLocation = {
+			ip,
 			longitude,
 			latitude,
 			country,
